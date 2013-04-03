@@ -5,6 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript"  src="com.example.phoenixao.web.Application/com.example.phoenixao.web.Application.nocache.js"></script>
         <title>JSP Page</title>
     </head>
     <body>

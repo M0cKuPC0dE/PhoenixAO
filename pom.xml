@@ -7,9 +7,8 @@
     <packaging>pom</packaging>
     <name>PhoenixAO</name>
     <modules>
-        <module>PhoenixAO-web</module>
-        <module>PhoenixAO-atmosphere</module>
         <module>PhoenixAO-dbnotification</module>
+        <module>PhoenixAO-web</module>
     </modules>
   
     <properties>
@@ -45,6 +44,17 @@
                 <groupId>org.atmosphere</groupId>
                 <artifactId>atmosphere-annotations</artifactId>
                 <version>${atmosphere.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.oracle</groupId>
+                <artifactId>ojdbc6</artifactId>
+                <version>11.2.0</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz</artifactId>
+                <version>2.1.7</version>
             </dependency>
             <dependency>
                 <groupId>com.oracle</groupId>
