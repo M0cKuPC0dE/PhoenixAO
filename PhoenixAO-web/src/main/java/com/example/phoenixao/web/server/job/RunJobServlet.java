@@ -5,6 +5,7 @@
 package com.example.phoenixao.web.server.job;
 
 import com.example.phoenixao.web.server.framework.OracleNotification;
+import com.example.phoenixao.web.server.framework.SubscribeBroadcaster;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -61,21 +62,15 @@ public class RunJobServlet extends HttpServlet {
         //Oracle Notification
         try {
             OracleNotification notification = new OracleNotification();
+            final SubscribeBroadcaster broadcaster = new SubscribeBroadcaster("oracleNotificationService");
             List<String> tables = new ArrayList<String>();
             tables.add("AIR_TEST");
             tables.add("AIR_TEST2");
-            
+
             notification.registerDatabaseNotification(tables, new DatabaseChangeListener() {
                 @Override
                 public void onDatabaseChangeNotification(DatabaseChangeEvent dce) {
-                    try {
-                        System.out.println("Oracle Change");
-                        Broadcaster broadcaster = BroadcasterFactory.getDefault().lookup(DefaultBroadcaster.class,"oracleNotificationService");
-                        broadcaster.broadcast(dce.getTableChangeDescription()[0].getTableName());
-                    } catch (Exception ex) {
-                        System.out.println("Ora - Error");
-                    }
-
+                    broadcaster.broadcast(dce.getTableChangeDescription()[0].getTableName());
                 }
             });
         } catch (Exception ex) {

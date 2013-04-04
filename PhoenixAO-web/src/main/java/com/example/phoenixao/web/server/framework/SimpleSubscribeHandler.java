@@ -2,9 +2,8 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.phoenixao.web.server;
+package com.example.phoenixao.web.server.framework;
 
-import com.example.phoenixao.web.server.framework.SubscribeHandler;
 import org.atmosphere.config.service.AtmosphereHandlerService;
 
 /**

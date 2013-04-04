@@ -17,10 +17,11 @@ import org.quartz.JobExecutionException;
  * @author wjirawong
  */
 public class SimpleJob implements Job{
+    
+    Broadcaster broadcaster = BroadcasterFactory.getDefault().lookup(DefaultBroadcaster.class,"sqartzJobService");
 
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
-        Broadcaster broadcaster = BroadcasterFactory.getDefault().lookup(DefaultBroadcaster.class,"sqartzJobService");
         if(broadcaster != null){
             broadcaster.broadcast(new Date().toString());
         }else{

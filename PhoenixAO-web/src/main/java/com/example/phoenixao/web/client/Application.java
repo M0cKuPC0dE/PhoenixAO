@@ -76,7 +76,7 @@ public class Application implements EntryPoint {
                 subscribeManager.subscribe("sqartzJobService", new SubScribeManagerCallback<String>() {
                     @Override
                     public void onSuccess(String result) {
-                        squartzLabel.setText(result);
+                        squartzLabel.setText(result.toString());
                     }
 
                     @Override
