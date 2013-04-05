@@ -2,24 +2,19 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.phoenixao.web.server.job;
+package com.example.phoenixao.web.server;
 
+import com.example.phoenixao.web.server.quartz.SimpleJob;
 import com.example.phoenixao.web.server.framework.OracleNotification;
 import com.example.phoenixao.web.server.framework.SubscribeBroadcaster;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import oracle.jdbc.dcn.DatabaseChangeEvent;
 import oracle.jdbc.dcn.DatabaseChangeListener;
-import org.atmosphere.cpr.Broadcaster;
-import org.atmosphere.cpr.BroadcasterFactory;
-import org.atmosphere.cpr.DefaultBroadcaster;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
@@ -28,6 +23,7 @@ import org.quartz.SchedulerException;
 import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 /**
  *
@@ -62,17 +58,13 @@ public class RunJobServlet extends HttpServlet {
         //Oracle Notification
         try {
             OracleNotification notification = new OracleNotification();
-            final SubscribeBroadcaster broadcaster = new SubscribeBroadcaster("oracleNotificationService");
+            
             List<String> tables = new ArrayList<String>();
             tables.add("AIR_TEST");
             tables.add("AIR_TEST2");
-
-            notification.registerDatabaseNotification(tables, new DatabaseChangeListener() {
-                @Override
-                public void onDatabaseChangeNotification(DatabaseChangeEvent dce) {
-                    broadcaster.broadcast(dce.getTableChangeDescription()[0].getTableName());
-                }
-            });
+            
+            DatabaseChangeListener dbChange = WebApplicationContextUtils.getWebApplicationContext(getServletContext()).getBean("simpleNotification", DatabaseChangeListener.class);
+            notification.registerDatabaseNotification(tables, dbChange);
         } catch (Exception ex) {
             Logger.getLogger(RunJobServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
