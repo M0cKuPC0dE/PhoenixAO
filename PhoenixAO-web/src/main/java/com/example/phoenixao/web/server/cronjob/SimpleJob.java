@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.phoenixao.web.subscribeservice.server.cronjob;
+package com.example.phoenixao.web.server.cronjob;
 
 import com.example.phoenixao.web.framework.server.subscribe.SubscribeBroadcaster;
 import java.util.Date;

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.phoenixao.web.subscribeservice.client;
+package com.example.phoenixao.web.client;
 
 import com.example.phoenixao.web.framework.client.SubScribeManagerCallback;
 import com.example.phoenixao.web.framework.client.SubscribeManager;

@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.phoenixao.web.subscribeservice.server;
+package com.example.phoenixao.web.server;
 
-import com.example.phoenixao.web.subscribeservice.server.cronjob.SimpleJob;
+import com.example.phoenixao.web.server.cronjob.SimpleJob;
 import com.example.phoenixao.web.framework.server.dbnotification.OracleNotification;
 import com.example.phoenixao.web.model.ServiceSubscribe;
 import com.example.phoenixao.web.repository.DataSubscribeService;

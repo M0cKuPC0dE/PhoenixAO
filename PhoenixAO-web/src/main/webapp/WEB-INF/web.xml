@@ -20,7 +20,7 @@
     </servlet>
     <servlet>
         <servlet-name>RunJobServlet</servlet-name>
-        <servlet-class>com.example.phoenixao.web.implement.server.RunJobServlet</servlet-class>
+        <servlet-class>com.example.phoenixao.web.server.RunJobServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
