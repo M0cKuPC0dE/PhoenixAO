@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.phoenixao.web.implement.server.repository.impl;
+package com.example.phoenixao.web.repository.impl;
 
-import com.example.phoenixao.web.implement.server.model.ServiceSubscribe;
-import com.example.phoenixao.web.implement.server.repository.DataSubscribeService;
+import com.example.phoenixao.web.model.ServiceSubscribe;
+import com.example.phoenixao.web.repository.DataSubscribeService;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

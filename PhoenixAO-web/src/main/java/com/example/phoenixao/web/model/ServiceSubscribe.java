@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.phoenixao.web.implement.server.model;
+package com.example.phoenixao.web.model;
 
 import java.io.Serializable;
 import javax.persistence.Column;

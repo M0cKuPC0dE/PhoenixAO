@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.phoenixao.web.implement.client;
+package com.example.phoenixao.web.subscribeservice.client;
 
 import com.example.phoenixao.web.framework.client.SubScribeManagerCallback;
 import com.example.phoenixao.web.framework.client.SubscribeManager;
@@ -10,7 +10,6 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;

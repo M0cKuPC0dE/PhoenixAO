@@ -3,7 +3,7 @@
   <persistence-unit name="PhoenixAOPU" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>jdbc/sti_common</jta-data-source>
-    <class>com.example.phoenixao.web.implement.server.model.ServiceSubscribe</class>
+    <class>com.example.phoenixao.web.model.ServiceSubscribe</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>

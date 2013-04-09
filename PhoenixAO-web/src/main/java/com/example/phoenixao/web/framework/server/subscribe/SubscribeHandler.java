@@ -4,8 +4,8 @@
  */
 package com.example.phoenixao.web.framework.server.subscribe;
 
-import com.example.phoenixao.web.implement.server.model.ServiceSubscribe;
-import com.example.phoenixao.web.implement.server.repository.DataSubscribeService;
+import com.example.phoenixao.web.model.ServiceSubscribe;
+import com.example.phoenixao.web.repository.DataSubscribeService;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
