@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.phoenixao.web.server.framework;
+package com.example.phoenixao.web.framework.server.dbnotification;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

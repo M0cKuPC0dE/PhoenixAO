@@ -15,7 +15,8 @@
     <inherits name="org.atmosphere.gwt.Client"/>
 
     <!-- Specify the app entry point class.                         -->
-    <entry-point class="com.example.phoenixao.web.client.Application" />
+    <entry-point class="com.example.phoenixao.web.implement.client.Application" />
         
-    <source path="client" />
+    <source path="implement/client" />
+    <source path="framework/client" />
 </module>

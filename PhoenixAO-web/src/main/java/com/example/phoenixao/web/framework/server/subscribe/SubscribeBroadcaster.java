@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.phoenixao.web.server.framework;
+package com.example.phoenixao.web.framework.server.subscribe;
 
 import org.atmosphere.cpr.Broadcaster;
 import org.atmosphere.cpr.BroadcasterFactory;
@@ -25,8 +25,6 @@ public class SubscribeBroadcaster {
             Broadcaster broadcaster = BroadcasterFactory.getDefault().lookup(DefaultBroadcaster.class, service);
             if (broadcaster != null) {
                 broadcaster.broadcast(message);
-            } else {
-                System.out.println("not found service : " + service);
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
