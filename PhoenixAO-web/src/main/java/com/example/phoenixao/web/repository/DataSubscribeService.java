@@ -5,6 +5,7 @@
 package com.example.phoenixao.web.repository;
 
 import com.example.phoenixao.web.model.ServiceSubscribe;
+import com.example.phoenixao.web.model.ServiceSubscribeType;
 import java.util.List;
 
 /**
@@ -13,4 +14,6 @@ import java.util.List;
  */
 public interface DataSubscribeService {
     public List<ServiceSubscribe> getServiceSubscribeBySubscribeName(String subscribeName);
+    public List<ServiceSubscribe> getServiceSubscribeByType(ServiceSubscribeType type);
+    public String getServiceSubscribeNameByServiceName(String serviceName);
 }

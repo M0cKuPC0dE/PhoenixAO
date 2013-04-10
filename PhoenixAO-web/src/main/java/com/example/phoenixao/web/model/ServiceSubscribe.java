@@ -5,11 +5,14 @@
 package com.example.phoenixao.web.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -28,6 +31,8 @@ public class ServiceSubscribe implements Serializable {
     @Column(name = "TYPE")
     @Enumerated(EnumType.STRING)
     private ServiceSubscribeType type;
+    @ElementCollection
+    private List<String> tables;
 
     public Long getId() {
         return id;
@@ -60,6 +65,16 @@ public class ServiceSubscribe implements Serializable {
     public void setType(ServiceSubscribeType type) {
         this.type = type;
     }
+
+    public List<String> getTables() {
+        return tables;
+    }
+
+    public void setTables(List<String> tables) {
+        this.tables = tables;
+    }
+    
+    
 
     @Override
     public int hashCode() {

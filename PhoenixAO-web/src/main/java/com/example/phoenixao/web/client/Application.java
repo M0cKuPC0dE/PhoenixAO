@@ -11,8 +11,10 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.TextBox;
 
 /**
  *
@@ -29,6 +31,8 @@ public class Application implements EntryPoint {
     private Button unSubscribeAll;
     private Label squartzLabel;
     private Label oracleLabel;
+    private TextBox userTextBox;
+    private HTML html;
 
     @Override
     public void onModuleLoad() {
@@ -42,8 +46,11 @@ public class Application implements EntryPoint {
         subscribeManager = new SubscribeManager();
         flexTable = new FlexTable();
 
-        subscribeSquartzButton = new Button("Subscribe Quartz");
-        unSubscribeSquartzButton = new Button("UnSubscribe Quartz");
+        userTextBox = new TextBox();
+        html = new HTML();
+
+        subscribeSquartzButton = new Button("Subscribe Cron");
+        unSubscribeSquartzButton = new Button("UnSubscribe Cron");
 
         subscribeOracleButton = new Button("Subscribe OracleNotification");
         unSubscribeOracleButton = new Button("UnSubscribe OracleNotification");
@@ -59,11 +66,28 @@ public class Application implements EntryPoint {
         flexTable.setWidget(1, 0, oracleLabel);
         flexTable.setWidget(1, 1, subscribeOracleButton);
         flexTable.setWidget(1, 2, unSubscribeOracleButton);
-        flexTable.setWidget(2, 0, unSubscribeAll);
+        flexTable.setText(2, 0, "User");
+        flexTable.setWidget(2, 1, userTextBox);
+        flexTable.setWidget(3, 0, unSubscribeAll);
 
         unSubscribeSquartzButton.setEnabled(false);
         unSubscribeOracleButton.setEnabled(false);
         RootPanel.get().add(flexTable);
+        RootPanel.get().add(html);
+        
+        
+        subscribeManager.subscribe("listUserSubscribe", new SubScribeManagerCallback<String>() {
+
+            @Override
+            public void onSuccess(String result) {
+                html.setHTML(result);
+            }
+
+            @Override
+            public void onFailure(Throwable caught) {
+                caught.printStackTrace();
+            }
+        });
 
     }
 
@@ -73,7 +97,7 @@ public class Application implements EntryPoint {
             public void onClick(ClickEvent event) {
                 subscribeSquartzButton.setEnabled(false);
                 unSubscribeSquartzButton.setEnabled(true);
-                subscribeManager.subscribe("sqartzJobService", new SubScribeManagerCallback<String>() {
+                subscribeManager.subscribe("cronSubscribe&username="+userTextBox.getValue(), new SubScribeManagerCallback<String>() {
                     @Override
                     public void onSuccess(String result) {
                         squartzLabel.setText(result.toString());
@@ -92,7 +116,7 @@ public class Application implements EntryPoint {
             public void onClick(ClickEvent event) {
                 subscribeSquartzButton.setEnabled(true);
                 unSubscribeSquartzButton.setEnabled(false);
-                subscribeManager.unSubscribe("sqartzJobService");
+                subscribeManager.unSubscribe("cronSubscribe");
             }
         });
     }
@@ -103,7 +127,7 @@ public class Application implements EntryPoint {
             public void onClick(ClickEvent event) {
                 subscribeOracleButton.setEnabled(false);
                 unSubscribeOracleButton.setEnabled(true);
-                subscribeManager.subscribe("oracleNotificationService", new SubScribeManagerCallback<String>() {
+                subscribeManager.subscribe("oracleNotificationSubscribe&username="+userTextBox.getValue(), new SubScribeManagerCallback<String>() {
                     @Override
                     public void onSuccess(String result) {
                         oracleLabel.setText(result);
@@ -122,7 +146,7 @@ public class Application implements EntryPoint {
             public void onClick(ClickEvent event) {
                 subscribeOracleButton.setEnabled(true);
                 unSubscribeOracleButton.setEnabled(false);
-                subscribeManager.unSubscribe("oracleNotificationService");
+                subscribeManager.unSubscribe("oracleNotificationSubscribe");
             }
         });
     }

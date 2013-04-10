@@ -9,5 +9,5 @@ package com.example.phoenixao.web.model;
  * @author wjirawong
  */
 public enum ServiceSubscribeType {
-    QUARTZ,ORACLE_NOTIFICATION;
+    CRONJOB,ORACLE_NOTIFICATION;
 }

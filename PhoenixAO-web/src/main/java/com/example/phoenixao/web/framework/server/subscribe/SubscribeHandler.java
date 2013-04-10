@@ -18,8 +18,6 @@ import org.atmosphere.cpr.BroadcasterFactory;
 import org.atmosphere.cpr.DefaultBroadcaster;
 import org.atmosphere.gwt.server.AtmosphereGwtHandler;
 import org.atmosphere.gwt.server.GwtAtmosphereResource;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 /**
@@ -49,10 +47,9 @@ public class SubscribeHandler extends AtmosphereGwtHandler {
             System.out.println("Registered Service : "+s.getServiceName());
         }
 
-
-        System.out.println("onRequ - " + subscribeName);
-        Broadcaster broadcaster = BroadcasterFactory.getDefault().lookup(DefaultBroadcaster.class, subscribeName, true);
-        broadcaster.setID(subscribeName);
+        //Broadcaster broadcaster = BroadcasterFactory.getDefault().lookup(DefaultBroadcaster.class, subscribeName, true);
+        Broadcaster broadcaster = BroadcasterFactory.getDefault().get("/subscribe/"+subscribeName);
+        //broadcaster.setID(subscribeName);
         broadcaster.addAtmosphereResource(resource);
         BroadcasterFactory.getDefault().add(broadcaster, subscribeName);
         super.onRequest(resource);
@@ -73,4 +70,5 @@ public class SubscribeHandler extends AtmosphereGwtHandler {
         }
         super.cometTerminated(cometResponse, serverInitiated);
     }
+    
 }
