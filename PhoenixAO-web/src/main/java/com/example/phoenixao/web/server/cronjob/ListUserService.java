@@ -7,7 +7,6 @@ package com.example.phoenixao.web.server.cronjob;
 import com.example.phoenixao.web.framework.server.annotation.SubscribeService;
 import com.example.phoenixao.web.framework.server.subscribe.SubscribeBroadcaster;
 import java.util.Collection;
-import java.util.Date;
 import org.atmosphere.cpr.Broadcaster;
 import org.atmosphere.cpr.BroadcasterFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class ListUserService {
     @Autowired
     private SubscribeBroadcaster broadcaster;
     
-    @Scheduled(cron = "*/5 * * * * ?")
+    @Scheduled(cron = "*/1 * * * * ?")
     public void doTask(){
         StringBuilder builder = new StringBuilder();
         Collection<Broadcaster> lookupAll = BroadcasterFactory.getDefault().lookupAll();

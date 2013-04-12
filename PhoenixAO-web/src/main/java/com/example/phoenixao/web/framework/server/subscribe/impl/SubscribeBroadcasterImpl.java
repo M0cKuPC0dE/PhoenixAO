@@ -29,13 +29,11 @@ public class SubscribeBroadcasterImpl implements SubscribeBroadcaster {
     public void broadcast(Object message) {
         try {
             String subscribeServiceName = getSubscribeService();
-            MetaBroadcaster.getDefault().broadcastTo("/subscribe/"+subscribeServiceName, message);
-//            Broadcaster broadcaster = BroadcasterFactory.getDefault().lookup(DefaultBroadcaster.class, subscribeServiceName);
-//            if (broadcaster != null) {
-//                broadcaster.broadcast(message);
-//            } else {
-//                System.out.println("not found broadcaster");
-//            }
+            // Send Broadcast to Main subscribe
+            MetaBroadcaster.getDefault().broadcastTo("/"+subscribeServiceName, message);
+            // Send Broadcast to User subscribe
+            MetaBroadcaster.getDefault().broadcastTo("/"+subscribeServiceName+"/*", message);
+            
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }

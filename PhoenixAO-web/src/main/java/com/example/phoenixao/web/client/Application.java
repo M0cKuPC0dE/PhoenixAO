@@ -116,7 +116,7 @@ public class Application implements EntryPoint {
             public void onClick(ClickEvent event) {
                 subscribeSquartzButton.setEnabled(true);
                 unSubscribeSquartzButton.setEnabled(false);
-                subscribeManager.unSubscribe("cronSubscribe");
+                subscribeManager.unSubscribe("cronSubscribe&username="+userTextBox.getValue());
             }
         });
     }
@@ -146,7 +146,7 @@ public class Application implements EntryPoint {
             public void onClick(ClickEvent event) {
                 subscribeOracleButton.setEnabled(true);
                 unSubscribeOracleButton.setEnabled(false);
-                subscribeManager.unSubscribe("oracleNotificationSubscribe");
+                subscribeManager.unSubscribe("oracleNotificationSubscribe&username="+userTextBox.getValue());
             }
         });
     }

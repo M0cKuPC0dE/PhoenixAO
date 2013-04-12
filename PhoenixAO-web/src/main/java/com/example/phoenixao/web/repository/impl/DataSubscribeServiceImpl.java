@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  *
  * @author wjirawong
+ * @serial :D make it serial kick it ass to serial.
  */
 @Repository
 @Transactional(propagation = Propagation.REQUIRED)
